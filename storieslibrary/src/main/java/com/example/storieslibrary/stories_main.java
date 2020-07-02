@@ -36,9 +36,9 @@ public class stories_main extends AppCompatActivity {
         current_index--;
         ctx=this;
         links = (ArrayList<ArrayList<String>>) intent.getSerializableExtra("url");
-        //time = (ArrayList<ArrayList<String>>) intent.getSerializableExtra("time");
+        time = (ArrayList<ArrayList<String>>) intent.getSerializableExtra("time");
         from=(ArrayList<String>)intent.getSerializableExtra("from");
-        time=(ArrayList<ArrayList<String>>) intent.getSerializableExtra("time");
+//        time=(ArrayList<ArrayList<String>>) intent.getSerializableExtra("time");
         allIndex =intent.getIntArrayExtra("allIndex");
         Log.d("Array", "Size = " + links.size() + " cur in " + current_index);
         for (int i = 0; i < links.size(); i++) {

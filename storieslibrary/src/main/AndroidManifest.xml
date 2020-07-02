@@ -1,2 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.storieslibrary" />
+    package="com.example.storieslibrary" >
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+        <activity android:exported="true" android:name="com.example.storieslibrary.stories_main" />
+    </application>
+
+</manifest>
