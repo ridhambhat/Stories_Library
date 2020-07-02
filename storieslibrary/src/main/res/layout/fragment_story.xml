@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+    android:id="@+id/layout"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:animateLayoutChanges="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/image_view_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"/>
+
+    <LinearLayout
+        android:id="@+id/progress_bar_2"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/progress_bar_2"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="10dp"
+        android:textAlignment="center"
+        android:id="@+id/from"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="Club Name"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/from"
+        android:layout_marginTop="0.5dp"
+        android:layout_marginStart="10dp"
+        android:textAlignment="center"
+        android:id="@+id/time"
+        android:textSize="10sp"
+        android:fontFamily="sans-serif-light"
+        android:text="Today, 10:54 a.m."
+        android:textColor="#ffffff"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/touch" />
+
+
+
+</RelativeLayout>

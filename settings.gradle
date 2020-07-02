@@ -1,0 +1,3 @@
+rootProject.name='Stories_Library'
+include ':app'
+include ':storieslibrary'
