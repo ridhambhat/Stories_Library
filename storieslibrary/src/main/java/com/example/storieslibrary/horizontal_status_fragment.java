@@ -258,7 +258,10 @@ public class horizontal_status_fragment extends Fragment {
     {
 //        Log.d("SRV", "setRecyclerView: ");
         rv.setLayoutManager(new LinearLayoutManager(ctx,LinearLayoutManager.HORIZONTAL, false));
-        rv.setAdapter(new RoundStoryAdapter(ctx,storyFrom, storyState));
+        ArrayList<String> showlink = new ArrayList<>();
+        for(int i = 0; i<storyFrom.size(); i++)
+            showlink.add(storyLink.get(i).get(0));
+        rv.setAdapter(new RoundStoryAdapter(ctx,storyFrom, storyState, showlink));
         rv.addOnItemTouchListener(
                 new RecyclerItemClickListener(ctx, rv, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override

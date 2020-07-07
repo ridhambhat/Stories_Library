@@ -1,23 +1,20 @@
 package com.example.storieslibrary;
 
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import androidx.recyclerview.widget.RecyclerView;
 
 import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -25,14 +22,16 @@ public class RoundStoryAdapter extends RecyclerView.Adapter<RoundStoryAdapter.Vi
 
     private List<String> from;
     private List<Integer> readState;
+    private List<String> showlink;
     private LayoutInflater mInflater;
     private Context ctx;
 
     // data is passed into the constructor
-    public RoundStoryAdapter(Context context, List<String> data, List<Integer> readState) {
+    public RoundStoryAdapter(Context context, List<String> data, List<Integer> readState, ArrayList<String> showlink) {
         this.mInflater = LayoutInflater.from(context);
         this.from = data;
         this.readState=readState;
+        this.showlink = showlink;
         ctx=context;
     }
 
@@ -62,15 +61,20 @@ public class RoundStoryAdapter extends RecyclerView.Adapter<RoundStoryAdapter.Vi
         else
             from=from2;
         holder.storyFrom.setText(from);
-        AssetManager assetManager = ctx.getAssets();
-        try (
-                InputStream inputStream = assetManager.open("club_logos/"+from2+".png");
-        ) {
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-            holder.roundFrame.setImageBitmap(bitmap);
-        } catch (IOException ex) {
-            //Toast.makeText(ctx,"path - "+" club_logo/"+"from2"+".png",Toast.LENGTH_SHORT).show();
-        }
+        Picasso.with(ctx)
+                .load(showlink.get(position))
+                .placeholder(R.drawable.loading)
+                .into(holder.roundFrame);
+
+//        AssetManager assetManager = ctx.getAssets();
+//        try (
+//                InputStream inputStream = assetManager.open("club_logos/"+from2+".png");
+//        ) {
+//            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+//            holder.roundFrame.setImageBitmap(bitmap);
+//        } catch (IOException ex) {
+//            //Toast.makeText(ctx,"path - "+" club_logo/"+"from2"+".png",Toast.LENGTH_SHORT).show();
+//        }
 
         int state=this.readState.get(position);
         if(state != 0){
