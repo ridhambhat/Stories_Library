@@ -32,6 +32,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(':storieslibrary')
-//    implementation 'com.github.ridhambhat:Stories_Library:1.0.4'
+//    implementation 'com.github.ridhambhat:Stories_Library:1.1.1'
 
 }
