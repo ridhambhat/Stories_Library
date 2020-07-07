@@ -6,10 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="METHOD 1"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:textSize="20dp"
+        android:id="@+id/tv"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fl"
+        android:layout_below="@+id/tv"
+        />
+
     <Button
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="100dp"
-        android:text="GO"
+        android:text="Start Story\nMETHOD 2"
         android:layout_centerInParent="true"
         android:id="@+id/go"
         />

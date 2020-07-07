@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:civ_border_color="#716C6C"
+        app:civ_border_width="3dp"
+        android:background="#ffffff"
+        android:src="@drawable/loggo"
+        android:id="@+id/roundedimgframe"
+        />
+
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/story_from"
+        android:textColor="#080808"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="3dp"/>
+
+</LinearLayout>

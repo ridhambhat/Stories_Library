@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -40,9 +40,9 @@ public class stories_main extends AppCompatActivity {
         from=(ArrayList<String>)intent.getSerializableExtra("from");
 //        time=(ArrayList<ArrayList<String>>) intent.getSerializableExtra("time");
         allIndex =intent.getIntArrayExtra("allIndex");
-        Log.d("Array", "Size = " + links.size() + " cur in " + current_index);
+//        Log.d("Array", "Size = " + links.size() + " cur in " + current_index);
         for (int i = 0; i < links.size(); i++) {
-            Log.d("Links", links.get(i).toString());
+//            Log.d("Links", links.get(i).toString());
         }
         fm=getSupportFragmentManager();
         goNextFrame(0);
@@ -82,7 +82,7 @@ public class stories_main extends AppCompatActivity {
 //                    fr.start();
 //                }
 //            }, 1000);
-            Log.d("Page", "Change in Page -- next");
+//            Log.d("Page", "Change in Page -- next");
         }
 
 
@@ -110,7 +110,7 @@ public class stories_main extends AppCompatActivity {
 //                    fr.start();
 //                }
 //            }, 1000);
-            Log.d("Page", "Change in Page -- prev");
+//            Log.d("Page", "Change in Page -- prev");
         }
 
     }

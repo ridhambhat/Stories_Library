@@ -7,7 +7,7 @@
         android:supportsRtl="true">
         <activity android:exported="true"
             android:name="com.example.storieslibrary.stories_main"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:theme="@style/AppTheme.Fullscreen"
             />
     </application>
 

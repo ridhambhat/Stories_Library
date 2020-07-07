@@ -3,6 +3,7 @@ package com.example.storieslibrary;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -35,28 +36,27 @@ import java.util.ArrayList;
 
 public class fragment_story extends Fragment {
 
-    int count;
-    int pageId;
-    static ArrayList<String> links;
-    static ArrayList<String> timelist;
-    static int progress=0;
-    static int currentindex;
-    static ObjectAnimator pillanim[];
-    static ProgressBar pills[];
-    static ImageView image;
+    private int count;
+    private int pageId;
+    private static ArrayList<String> links;
+    private static ArrayList<String> timelist;
+    private static int progress=0;
+    private static int currentindex;
+    private static ObjectAnimator pillanim[];
+    private static ProgressBar pills[];
+    private static ImageView image;
     private boolean isSpeakButtonLongPressed = false;
-    static RelativeLayout layout;
-    static boolean wasInFocus=false;
-    static boolean isInFocus=true;
-    static View view;
-    float oldX,oldY,newX,newY;
-    static Context ctx;
-    static boolean record=false;
-    static int maxId;
-    static TextView from;
-    static TextView time;
-    static LinearLayout progressBar;
-
+    private static RelativeLayout layout;
+    private static boolean wasInFocus=false;
+    private static boolean isInFocus=true;
+    private static View view;
+    private float oldX,oldY,newX,newY;
+    private static Context ctx;
+    private static boolean record=false;
+    private static int maxId;
+    private static TextView from;
+    private static TextView time;
+    private static LinearLayout progressBar;
 
 
     public static fragment_story newInstance(int maxId, int pageId, int currentIndex, ArrayList<String> links,String from,ArrayList<String> time) {
@@ -90,6 +90,9 @@ public class fragment_story extends Fragment {
         ctx=view.getContext();
         view.setFocusableInTouchMode(true);
         view.requestFocus();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            view.setFocusable(View.FOCUSABLE);
+        }
         view.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -165,10 +168,19 @@ public class fragment_story extends Fragment {
                 .into(image);
         pillanim[currentindex].start();
         time.setText(timelist.get(currentindex));
-//        String aa= SaveSharedPreference.getVisitedlinks(ctx);
-//        aa=aa+" "+links.get(currentindex);
-//        SaveSharedPreference.setVisitedlinks(ctx,aa);
-        Log.d("Pic","Piccasso");
+
+        String SHARED_PREFS_FILE = "com.example.storieslibrary.storycache";
+        SharedPreferences shared;
+        shared = ctx.getSharedPreferences(SHARED_PREFS_FILE, Context.MODE_PRIVATE);
+        String aa = shared.getString("VISITED_LINKS", "");
+//        Log.d("STATE => ","INSIDE STORY FRAGMENT, vis link get => "+aa);
+        aa=aa+" "+links.get(currentindex);
+        SharedPreferences.Editor editor = shared.edit();
+//        Log.d("STATE => ","INSIDE STORY FRAGMENT, vis link export => "+aa);
+        editor.putString("VISITED_LINKS", aa);
+        editor.apply();
+//        Log.d("Pic","Piccasso");
+
     }
 
 
@@ -232,7 +244,7 @@ public class fragment_story extends Fragment {
                 pills[i].setProgress(0);
             }
             currentindex=0;
-            Log.d("kill","kill");
+//            Log.d("kill","kill");
             stories_main.goNextFrame(currentindex);
         }
     }
@@ -266,8 +278,10 @@ public class fragment_story extends Fragment {
 
             if (pEvent.getAction() == MotionEvent.ACTION_DOWN){
                 if (!record){
+
                     oldX=pEvent.getX();
                     oldY=pEvent.getY();
+//                    Log.d("SWIPE", "down -- x => "+oldX+" - y => "+oldY);
                     record=true;
                 }
 
@@ -279,7 +293,7 @@ public class fragment_story extends Fragment {
                 record=false;
                 newX=pEvent.getX();
                 newY=pEvent.getY();
-                Log.d("up","UUPP");
+//                Log.d("up","UUPP");
 
                 if (isSpeakButtonLongPressed) {
                     // Do something when the button is released.
@@ -287,9 +301,11 @@ public class fragment_story extends Fragment {
                     Visible();
                     isSpeakButtonLongPressed = false;
                 }
-                else if(Math.abs(newX-oldX)>50){
+                else if(Math.abs(newX-oldX)>100 && (oldX!=0) && (oldY!=0)){
                     if(oldX<newX) {
                         goLeftPage();
+//                        Log.d("SWIPE", "oldX => "+oldX+" - newX => "+newX+" - oldY => "+oldY+" - newY => "+ newY );
+//                        Log.d("SWIPE", "newX-oldX => "+Math.abs(newX-oldX)+" -- newY-oldY => "+ Math.abs(newY-oldY));
                         //Toast.makeText(ctx, "ToLeftPage", Toast.LENGTH_SHORT).show();
                     }
                     else {
@@ -328,7 +344,7 @@ public class fragment_story extends Fragment {
     }
 
     private void goRightPage(){
-        Log.d("Array","Right");
+//        Log.d("Array","Right");
         pause();
         stories_main.goNextFrame(currentindex);
     }
@@ -361,7 +377,7 @@ public class fragment_story extends Fragment {
                 pills[i].setProgress(0);
             }
             currentindex=0;
-            Log.d("kill","kill");
+//            Log.d("kill","kill");
             //getActivity().finish();
             goRightPage();
         }
