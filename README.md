@@ -21,7 +21,7 @@ Step 2. Add the dependency
 	        implementation 'com.github.ridhambhat:Stories_Library:1.1.1' //Replace the version number with the latest version
 	}
 
-# How to use
+# How To Use
 
 For method 1 [instagram inspired story handler recycler view], use steps 3-5.
 
@@ -124,7 +124,7 @@ Step 6. We will make an intent to launch the story main class. We will also pass
         startActivityForResult(it,0);
 
 
-# Sample shots
+# Sample Shots
 
 <img src="example_images/Screenshot_20200707-171640.png" width=250 /> 
 
