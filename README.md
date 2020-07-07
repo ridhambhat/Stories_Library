@@ -124,7 +124,7 @@ Step 6. We will make an intent to launch the story main class. We will also pass
         startActivityForResult(it,0);
 
 
-# Sample example shots
+# Sample shots
 
 <img src="example_images/Screenshot_20200707-171640.png" width=250 /> 
 
