@@ -126,13 +126,14 @@ Step 6. We will make an intent to launch the story main class. We will also pass
 
 # Sample Shots
 
-<img src="example_images/Screenshot_20200707-171640.png" width=250 /> 
-
-<img src="example_images/Screenshot_20200707-160031.png" width=250 /> 
-
-<img src="example_images/Screenshot_20200707-160046.png" width=250 /> 
-
-<img src="example_images/Screenshot_20200707-160059.png" width=250 /> 
+<table>
+  <tr>
+    <td><img src="example_images/Screenshot_20200707-171640.png" width=250 /> </td>
+    <td><img src="example_images/Screenshot_20200707-160031.png" width=250 /> </td>
+    <td><img src="example_images/Screenshot_20200707-160046.png" width=250 /> </td>
+    <td><img src="example_images/Screenshot_20200707-160059.png" width=250 /> </td>
+  </tr>
+ </table>
 
 # Libraries Used
 
